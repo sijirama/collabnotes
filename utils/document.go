@@ -10,7 +10,14 @@ type document struct {
 	Title string `xml:"title"`
 	URL   string `xml:"url"`
 	Text  string `xml:"abstract"`
+	Links []Link `xml:"links>sublink"`
 	ID    int
+}
+
+type Link struct {
+	LinkType string `xml:"linktype,attr"`
+	Anchor   string `xml:"anchor"`
+	Link     string `xml:"link"`
 }
 
 func LoadDocuments(path string) ([]document, error) {

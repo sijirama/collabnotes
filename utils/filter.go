@@ -21,7 +21,7 @@ func stopwordFilter(tokens []string) []string {
 		"then": {}, "there": {}, "these": {}, "they": {}, "this": {}, "to": {},
 		"was": {}, "will": {}, "with": {}}
 
-	r := make([]string, len(tokens))
+	r := make([]string, len(tokens)) //NOTE: initialize with zero length but same capacity as tokens
 
 	for _, token := range tokens {
 		if _, ok := stopwords[token]; !ok {
