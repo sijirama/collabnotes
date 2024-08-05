@@ -27,21 +27,21 @@ func main() {
 	}
 	log.Printf("Loaded %d documents in %v", len(docs), time.Since(start))
 
+	//index documents
+	start = time.Now()
+	idx := make(utils.Index)
+	idx.Add(docs)
+	log.Printf("Indexed %d documents in %v", len(docs), time.Since(start))
+
+	//search
+	start = time.Now()
+	matchedIDS := idx.Search(query)
+	log.Printf("Search found %d documents in %v", len(matchedIDS), time.Since(start))
+
+	for _, id := range matchedIDS {
+		doc := docs[id]
+		log.Printf("%d\t%s\n", id, doc.Text)
+	}
 	/*
-		//index documents
-		start = time.Now()
-		idx := make(utils.Index)
-		idx.Add(docs)
-		log.Printf("Indexed %d documents in %v", len(docs), time.Since(start))
-
-		//search
-		start = time.Now()
-		matchedIDS := idx.Search(query)
-		log.Printf("Search found %d documents in %v", len(matchedIDS), time.Since(start))
-
-		for _, id := range matchedIDS {
-			doc := docs[id]
-			log.Printf("%d\t%s\n", id, doc.Text)
-		}
-	*/
+	 */
 }
