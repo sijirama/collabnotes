@@ -9,11 +9,18 @@ import (
 	"github.com/sijirama/search-engine/utils"
 )
 
-func main() {
-	var dumppath, query string
+var dumppath, query string
 
+func init() {
+
+}
+
+func main() {
+
+	//flag.StringVar(&dumppath, "p", "dataset.xml", "path of the dataset")
+	//get our arguments
 	flag.StringVar(&dumppath, "p", "comp.xml.gz", "path of the dataset")
-	flag.StringVar(&query, "q", "Small wild cat", "string to search")
+	flag.StringVar(&query, "q", "Small wild cat", "string to search") // remove this later and make it a repl
 
 	flag.Parse()
 
@@ -42,6 +49,4 @@ func main() {
 		doc := docs[id]
 		log.Printf("%d\t%s\n", id, doc.Text)
 	}
-	/*
-	 */
 }
